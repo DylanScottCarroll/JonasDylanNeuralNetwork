@@ -2,8 +2,7 @@
 
 class Main{
     public static void main(String[] args){
-        Net net = new Net(new int[]{1, 4, 4, 2});
-
+        Net net = new Net("Data.txt");
         net.Save("test.txt");
 
     }

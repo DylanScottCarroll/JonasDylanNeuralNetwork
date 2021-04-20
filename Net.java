@@ -1,6 +1,9 @@
 import java.util.Scanner;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 
 class Net{
     private Node[][] layers;
@@ -12,7 +15,7 @@ class Net{
     public Net(int[] layerLengths){
         this.layerLengths = layerLengths;
         layers = new Node[layerLengths.length-1][];
-        
+
         for(int i = 0; i < layers.length; i++){
             layers[i] = new Node[layerLengths[i+1]];
 
@@ -35,11 +38,14 @@ class Net{
     //bias of (x,y) followed by list of weights for(x,y)
     //...
     public Net(String fileName){
-        Scanner scan = new Scanner(fileName);
+        try{
+
+        Scanner scan = new Scanner(new File(fileName));
+
         layers = new Node[scan.nextInt()-1][];
-        layerLengths = new int[layers.length];
+        layerLengths = new int[layers.length+1];
         
-        for(int i = 0; i < layers.length+1;i++){
+        for(int i = 0; i < layerLengths.length;i++){
             layerLengths[i] = scan.nextInt();
         }
 
@@ -55,6 +61,16 @@ class Net{
                 }
                 layers[i][j] = new Node(bias, weights);
             }
+        }
+        scan.close();
+
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch(InputMismatchException e){
+            System.out.println("Oppsie!: Tried to load an invalid file :(");
+            e.printStackTrace();
         }
     }
 
@@ -73,17 +89,21 @@ class Net{
 
             //Write all of the nodes
             for(int i = 0; i < layers.length; i++){
+                if(i!=0){file.write("\n\n");}
+
                 int currentLength = layers[i].length;
                 for(int j = 0; j < currentLength; j++){
+                    if(j!=0) {file.write("\n");}
+                    
                     Node node = layers[i][j];
 
-                    file.write(node.bias + "*");
+                    file.write(node.bias + " ");
 
                     for(int k = 0; k < node.weights.length; k++){
                         file.write(node.weights[k] + " ");
                     }
 
-                    file.write("\n");
+                   
                 }
                 
             }

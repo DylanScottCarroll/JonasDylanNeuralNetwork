@@ -13,12 +13,7 @@ class Node{
     //Constructor that creates an empty node (initialized at all zeroes)
     public Node(int size){
         weights = new float[size];
-
-        for(int i = 0; i < weights.length; i++){
-            weights[i] = i;
-        }
-
-        bias = 1.0f;
+        bias = 0;
     }
 
     //Calculates the weighted sum of pastValues and adds the bias.
