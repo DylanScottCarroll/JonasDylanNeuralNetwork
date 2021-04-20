@@ -2,7 +2,9 @@
 
 class Main{
     public static void main(String[] args){
-        System.out.println("Hello World!");
+        Net net = new Net(new int[]{1, 4, 4, 2});
+
+        net.Save("test.txt");
 
     }
 
