@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
+import java.util.Random;
 
 class Net{
     private Node[][] layers;
@@ -27,6 +28,18 @@ class Net{
             }
 
         }
+    }
+    
+    public Net(Net net, float mutateVal){
+        this.layerLengths = net.layerLengths;
+        this.layers = net.layers;
+        Random rand = new Random();
+        for(int i = 0; i < layers.length; i++){
+            for(int j = 0; j < layers[i].length; j++){
+                layers[i][j] += ((rand.nextFloat()-0.5f)*mutateVal);
+            }
+        }
+
     }
     
     //Initializes a network from a file given a file namme
@@ -141,4 +154,13 @@ class Net{
         return nextValues;
         
     }
+
+    public Net createMutatedClone(float mutateVal){
+        return new Net(this, mutateVal);
+
+    }
+
+
+
+
 }

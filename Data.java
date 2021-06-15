@@ -38,6 +38,7 @@ class Data{
 
         //Loop through each image in the binary data and create an Image object
         int imageCount = (imagesBytes.length - imageDataOffset) / SIZE*SIZE
+        images = new Image[imageCount];
 
         for(int i = 0; i < imageCount; i++){
             char[] imageData = new char[SIZE*SIZE];

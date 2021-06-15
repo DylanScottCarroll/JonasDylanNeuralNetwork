@@ -8,11 +8,13 @@ To Do:
 
 ☑ Save and load weights
 
-Write training/backpropagation algorithm
+☑ Write training algorithm
 
-Write wway to store and load training data.
+☑ Write way to store and load training data.
 
-Apply algorith to network.
+Put it all together in Main
+
+Add printing stuff to display internal state
 
 Train.
 
