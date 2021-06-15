@@ -11,6 +11,8 @@ class Net{
 
     public Net(){}
 
+    public float fitness = 0.0f;
+
     //Initializes a brand spanking new network with all-zero weights
     public Net(int[] layerLengths){
         this.layerLengths = layerLengths;
@@ -117,8 +119,11 @@ class Net{
     
     }
 
-    //Given the input
-    public float[] Propogate(float[] input){
+    //Given the input layer activations, calculate the acitvations of all nodes
+    //  and return the activation of the output layer.
+    //
+    //Runs the network :)
+    public float[] propogate(float[] input){
         float[] pastValues = input;
         float[] nextValues = null;
 
