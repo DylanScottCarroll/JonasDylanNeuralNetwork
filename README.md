@@ -1,26 +1,40 @@
-# JonasDylanNeuralNetwork
+# Jonas-Dylan Neural Network Project
 Dylan and Jonas are working together to make a Neural Network for fun and glory.
 
 
-To Do:
+&nbsp
+
+
+## To Do:
 
 ☑ Hack together the actual network. And get it to run.
 
 ☑ Save and load weights
 
-☑ Write training algorithm
+☑ Write evolutionaty training algorithm
 
-☑ Write way to store and load training data.
+☑ Write way to load training data.
 
-Put it all together in Main
+☐ Put it all together in Main (and debug 😖)
 
-Add printing stuff to display internal state
+☐ Add printing stuff to display internal state
 
-Train.
+☐ Train the network to recognize digits
+
+❔ Write graphical interface that lets us draw our own digits
+
+❔ Apply to other problems
+
+❔ Clean up the interface and package it as a library
+
+❔ Implement Backprobagation algorithm
 
 
+&nbsp
 
-# Digit Training Data File Structure
+
+## Digit Training Data File Structure
+
 
 **LABEL FILE**
 
@@ -31,7 +45,6 @@ Train.
 | 0008     | unsigned byte   | 0-9              | label                    |
 | 0009     | unsigned byte   | 0-9              | label                    |
 | ....     | unsigned byte   | 0-9              | label                    |
-| xxxx     | unsigned byte   | 0-9              | label                    |
 
 
 **IMAGE FILE**
@@ -45,7 +58,7 @@ Train.
 | 0016     | unsigned byte   | 0-255            | pixel               |
 | 0017     | unsigned byte   | 0-255            | pixel               |
 | ....     | unsigned byte   | 0-255            | pixel               |
-| xxxx     | unsigned byte   | 0-255            | pixel               |
 
 
-Pixels are organized row-wise. Pixel values are 0 to 255. 0 means background (white), 255 means foreground (black).
+Images are greyscale with pixel values 0 to 255. 0 is background (white), 255 is foreground (black)
+Pixels are stored in row-major order.
