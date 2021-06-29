@@ -8,9 +8,9 @@ public class Training{
     //Constructors
     
     //Random Generations
-    public Training(Data data, int netCount){
+    public Training(Data data, int netCount, int[] layerLengths){
         this.data = data;
-        nextGeneration = randomNets(netCount);
+        nextGeneration = randomNets(netCount, layerLengths);
     }
 
     //From a list of file names
@@ -85,4 +85,14 @@ public class Training{
         return fitness;
     }
 
+
+    private Net[] randomNets(int length, int[] layerLengths){
+        Net[] nets = new Net[length];
+        Net emptyNet = new Net(layerLengths);
+        for(int i = 0; i < nets.length; i++){
+            nets[i] = new Net(emptyNet, 2);
+        }
+
+        return nets;
+    }
 }
