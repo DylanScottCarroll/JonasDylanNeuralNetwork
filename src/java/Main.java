@@ -1,15 +1,39 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 
 class Main{
-    public static void main(String[] args){
-        Net net = new Net("Data.txt");
-        net.Save("test.txt");
-        
-       float[] output = net.propogate(new float[]{0.1f, 0.1f});
+    public static void main(String[] args) throws FileNotFoundException{
 
-       for(float value : output){
-           System.out.println(value);
-       }
+        File file = new File("Config.txt");
+        Scanner scan = new Scanner(file);
+
+        String imagesFile = scan.next();
+        String labelsFile = scan.next();
+        float mutateVal = scan.nextFloat();
+        int testcases = scan.nextInt();
+        int generationsToRun = scan.nextInt();
+        String outputFile = scan.next();
+        int netCount = scan.nextInt();
+        int saveCount = 
+
+        scan.close();
+
+        Data data = new Data(imagesFile, labelsFile);
+
+        Training train = new Training(data);
+        
+        for(int i = 0; i < generationsToRun; i++){
+            train.evolveOneGeneration(testcases, mutateVal);
+
+
+        }
+        
+        for(int i = 0; i < netCount; i++){
+
+
+        }
 
         
     }
