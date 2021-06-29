@@ -25,6 +25,7 @@ public class Training{
         for(int i = 0; i < files.length; i++){
             nets[i] = new Net(files[i]);
         }
+        return nets;
     }
 
 
