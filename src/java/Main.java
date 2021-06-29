@@ -8,7 +8,7 @@ class Main{
 
         File file = new File("Config.txt");
         Scanner scan = new Scanner(file);
-
+	//booya
         String imagesFile = scan.next();
         String labelsFile = scan.next();
         float mutateVal = scan.nextFloat();
