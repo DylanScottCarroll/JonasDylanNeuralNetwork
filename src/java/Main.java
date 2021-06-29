@@ -8,7 +8,7 @@ class Main{
 
         File file = new File("Config.txt");
         Scanner scan = new Scanner(file);
-	//booya
+
         String imagesFile = scan.next();
         String labelsFile = scan.next();
         float mutateVal = scan.nextFloat();
@@ -17,12 +17,21 @@ class Main{
         String outputFile = scan.next();
         int netCount = scan.nextInt();
         int saveCount = scan.nextInt();
+        
+        String[] lengths = scan.nextLine().split(" ");
+
+        int[] intLengths = new int[lengths.length];
+        for(int i = 0; i < lengths.length; i++){
+            intLengths[i] = Integer.parseInt(lengths[i]);
+        }
+
+        
 
         scan.close();
 
         Data data = new Data(imagesFile, labelsFile);
 
-        Training train = new Training(data, saveCount);
+        Training train = new Training(data, saveCount, intLengths);
         
         for(int i = 0; i < generationsToRun; i++){
             train.evolveOneGeneration(testcases, mutateVal);
@@ -34,15 +43,12 @@ class Main{
             System.out.println(best.fitness);
         }
 
-
-        Scanner outScan = new Scanner(outputFile);
-        
-        //find 3 best and save to outputFile
-        for(int i = 0; i < netCount; i++){
-            
-
+        Net best = train.generation[0];
+        for(int i = 1; i < netCount; i++){
+            if(train.generation[i].fitness > best.fitness)
+            best = train.generation[i];
         }
-
+        best.Save(outputFile);
         
     }
 
