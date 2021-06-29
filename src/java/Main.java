@@ -16,22 +16,24 @@ class Main{
         int generationsToRun = scan.nextInt();
         String outputFile = scan.next();
         int netCount = scan.nextInt();
-        int saveCount = 
+        int saveCount = scan.nextInt();
 
         scan.close();
 
         Data data = new Data(imagesFile, labelsFile);
 
-        Training train = new Training(data);
+        Training train = new Training(data, saveCount);
         
         for(int i = 0; i < generationsToRun; i++){
             train.evolveOneGeneration(testcases, mutateVal);
+                                    //PRINT OUT TOP NET
 
 
         }
-        
-        for(int i = 0; i < netCount; i++){
 
+        //find 3 best and save to outputFile
+        for(int i = 0; i < netCount; i++){
+            
 
         }
 
