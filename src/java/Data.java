@@ -11,6 +11,7 @@ class Data{
     final int SIZE = 28;
 
     private Image[] images;
+    public int imageCount;
     
     //TODO: 
     public Data(String imageFile, String labelFile){
@@ -51,7 +52,9 @@ class Data{
 
                 images[i] = new Image(imageData, label);
 
-        }
+            }
+
+            imageCount = images.length;
 
 
         } catch (IOException ex) {

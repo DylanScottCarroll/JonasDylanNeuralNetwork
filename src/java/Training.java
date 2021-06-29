@@ -8,23 +8,24 @@ public class Training{
     //Constructors
     
     //Random Generations
-    public Training(Data data, int netCount){
+    public Training(Data data, int netCount, int[] layerLengths){
         this.data = data;
-        nextGeneration = randomNets(netCount);
+        nextGeneration = randomNets(netCount, layerLengths);
     }
 
     //From a list of file names
     public Training(Data data, String[] nets){
         this.data = data;
-        nextGeneration = loadGeneration(nets)
+        nextGeneration = loadGeneration(nets);
     }
 
     //Makes new Networks from the given list of Net Storage Files
     private Net[] loadGeneration(String[] files){
         Net[] nets = new Net[files.length];
         for(int i = 0; i < files.length; i++){
-            nets[i] = new Net(file[i]);
+            nets[i] = new Net(files[i]);
         }
+        return nets;
     }
 
 
@@ -44,7 +45,7 @@ public class Training{
         }
         
         for(int i = 0; i < nextGeneration.length; i++){
-            nextGeneration[i] = generation[i].mutate(mutateVal);
+            nextGeneration[i] = new Net(generation[i], mutateVal);
         }
 
     }
@@ -60,7 +61,7 @@ public class Training{
         for(int i = 0; i < nextGeneration.length; i++){
             float fitness = 0.0f;
             for(int j = 0; j < testCases; j++){
-                int randData = rand.nextInt(data.images.length);
+                int randData = rand.nextInt(data.imageCount);
                 
                 Image image = data.getInput(randData);
                 float[] results = nextGeneration[i].propogate(image.pixels);
@@ -72,18 +73,26 @@ public class Training{
             nextGeneration[i].fitness = fitness / testCases;
             fitness = 0.0f;
         }
-        rand.close();
     }
     
 
     //Calculate the fitness of a comparison based on the guess 
     private float calculateFitness(float[] results, int label){
+        float fitness = 0;
         for(int k = 0; k < results.length; k++){
             fitness += results[k] * (label == k ? 1 : -1);
         }
+        return fitness;
     }
 
 
+    private Net[] randomNets(int length, int[] layerLengths){
+        Net[] nets = new Net[length];
+        Net emptyNet = new Net(layerLengths);
+        for(int i = 0; i < nets.length; i++){
+            nets[i] = new Net(emptyNet, 2);
+        }
 
-    public Net[]
+        return nets;
+    }
 }
