@@ -26,9 +26,12 @@ class Main{
         
         for(int i = 0; i < generationsToRun; i++){
             train.evolveOneGeneration(testcases, mutateVal);
-                                    //PRINT OUT TOP NET
-
-
+            Net best = train.generation[0];
+            for(int i = 1; i < netCount; i++){
+                if(train.generation[i].fitness > best.fitness)
+                best = train.generation[i];
+            }
+            System.out.println(best.fitness);
         }
 
         //find 3 best and save to outputFile
