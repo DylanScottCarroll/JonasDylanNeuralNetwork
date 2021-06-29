@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.System.*;
 
 //Some code coppied from here:
 //https://www.codejava.net/java-se/file-io/how-to-read-and-write-binary-files-in-java
@@ -7,6 +8,7 @@ class Data{
     
     final int imageDataOffset = 16;
     final int labelDataOffset = 8;
+    final int SIZE = 28;
 
     private Image[] images;
     
@@ -31,27 +33,34 @@ class Data{
             labelInputStream.read(labelsBytes);
             labelInputStream.close();
  
- 
+
+            
+            //Loop through each image in the binary data and create an Image object
+            int imageCount = (imagesBytes.length - imageDataOffset) / SIZE*SIZE;
+            images = new Image[imageCount];
+
+            for(int i = 0; i < imageCount; i++){
+                byte[] imageData = new byte[SIZE*SIZE];
+                
+                int k = 0;
+                for(int j = i*SIZE*SIZE + imageDataOffset; j < (i+1)*SIZE*SIZE + imageDataOffset; j++){
+                    imageData[k++] = imagesBytes[j];
+                }
+
+                byte label = labelsBytes[i + labelDataOffset];
+
+                images[i] = new Image(imageData, label);
+
+        }
+
+
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
-
-        //Loop through each image in the binary data and create an Image object
-        int imageCount = (imagesBytes.length - imageDataOffset) / SIZE*SIZE
-        images = new Image[imageCount];
-
-        for(int i = 0; i < imageCount; i++){
-            char[] imageData = new char[SIZE*SIZE];
-
-            for(int j = i*SIZE*SIZE + image; j < (i+1)*SIZE*SIZE + 16; j++){
-                imageData[i] = imagesBytes[j];
-            }
-
-            char label = labelsData[i + labelDataOffset];
-
-            images[i] = new Image(imageData, label);
+            System.exit(1);
 
         }
+
+        
 
 
     }

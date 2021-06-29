@@ -7,11 +7,11 @@ class Image{
 
     public Image(){}
 
-    public Image(char[] bytes, char label ){
-        this.label = (int) label;
+    public Image(byte[] bytes, byte label ){
+        this.label = ((int) label) & 0xFF ;
         
         for(int i = 0; i < SIZE*SIZE; i++){
-            pixels[i] = bytes[i] / 255.0f;
+            pixels[i] = (((int) bytes[i]) & 0xFF) / 255.0f;
         }
     }
 
