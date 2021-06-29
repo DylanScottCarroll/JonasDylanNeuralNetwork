@@ -31,12 +31,12 @@ class Net{
     }
     
     public Net(Net net, float mutateVal){
-        this.layerLengths = net.layerLengths;
-        this.layers = net.layers;
-        Random rand = new Random();
+        this.layerLengths = net.layerLengths.clone();
+
         for(int i = 0; i < layers.length; i++){
             for(int j = 0; j < layers[i].length; j++){
-                layers[i][j] += ((rand.nextFloat()-0.5f)*mutateVal);
+                this.layers[i][j] = net.layers[i][j].createClone();
+                layers[i][j] = new Node(net.layers[i][j], mutateVal);
             }
         }
 
