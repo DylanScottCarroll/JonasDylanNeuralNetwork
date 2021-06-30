@@ -1,5 +1,5 @@
-Images
-Labels
+src\resources\TrainingData\emnist-digits-train-images-idx3-ubyte
+src\resources\TrainingData\emnist-digits-train-labels-idx1-ubyte
 0.05
 200
 100

@@ -6,19 +6,26 @@ import java.io.FileNotFoundException;
 class Main{
     public static void main(String[] args) throws FileNotFoundException{
 
-        File file = new File("Config.txt");
+        File file = new File("src\\resources\\Config.txt");
         Scanner scan = new Scanner(file);
 
-        String imagesFile = scan.next();
-        String labelsFile = scan.next();
+        String imagesFile = scan.nextLine();
+        String labelsFile = scan.nextLine();
         float mutateVal = scan.nextFloat();
         int testcases = scan.nextInt();
         int generationsToRun = scan.nextInt();
-        String outputFile = scan.next();
+        scan.nextLine();
+        String outputFile = scan.nextLine();
         int netCount = scan.nextInt();
-        String[] lengths = scan.nextLine().split(" ");
+        scan.nextLine();
+
+        String lineScanned = scan.nextLine();
+        String[] lengths = lineScanned.split(" ");
 
         scan.close();
+
+        System.out.println(lineScanned);
+        
 
         int[] intLengths = new int[lengths.length];
         for(int i = 0; i < lengths.length; i++){

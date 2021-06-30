@@ -61,6 +61,7 @@ public class Training{
         for(int i = 0; i < nextGeneration.length; i++){
             float fitness = 0.0f;
             for(int j = 0; j < testCases; j++){
+                
                 int randData = rand.nextInt(data.imageCount);
                 
                 Image image = data.getInput(randData);

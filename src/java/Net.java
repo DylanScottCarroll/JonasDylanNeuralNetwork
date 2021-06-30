@@ -33,7 +33,9 @@ class Net{
     public Net(Net net, float mutateVal){
         this.layerLengths = net.layerLengths.clone();
 
+        layers = new Node[layerLengths.length-1][];
         for(int i = 0; i < layers.length; i++){
+            layers[i] = new Node[layerLengths[i+1]];
             for(int j = 0; j < layers[i].length; j++){
                 this.layers[i][j] = net.layers[i][j].createClone();
                 layers[i][j] = new Node(net.layers[i][j], mutateVal);
