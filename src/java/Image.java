@@ -21,11 +21,22 @@ class Image{
         for(int i = 0; i < SIZE; i++){
             String line = "";
             for(int j = 0; j < SIZE; j++){
-                if(pixels[i*SIZE + j] > 0.5){
-                    line += "#";
+                float value = pixels[i*SIZE + j];
+                
+                if(value < 0.2){
+                    line += "  ";
+                }
+                else if(value < 0.4){
+                    line += "░░";
+                }
+                else if(value < 0.6){
+                    line += "▒▒";
+                }
+                else if(value < 0.8){
+                    line += "▓▓";
                 }
                 else{
-                    line += " ";
+                    line += "██";
                 }
             }
             System.out.println(line);
