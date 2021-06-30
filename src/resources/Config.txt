@@ -1,0 +1,10 @@
+Images
+Labels
+0.05
+200
+100
+output.txt
+20
+784 16 16 10
+
+

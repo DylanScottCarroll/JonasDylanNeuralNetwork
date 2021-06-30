@@ -16,22 +16,19 @@ class Main{
         int generationsToRun = scan.nextInt();
         String outputFile = scan.next();
         int netCount = scan.nextInt();
-        int saveCount = scan.nextInt();
-        
         String[] lengths = scan.nextLine().split(" ");
+
+        scan.close();
 
         int[] intLengths = new int[lengths.length];
         for(int i = 0; i < lengths.length; i++){
             intLengths[i] = Integer.parseInt(lengths[i]);
         }
 
-        
-
-        scan.close();
 
         Data data = new Data(imagesFile, labelsFile);
 
-        Training train = new Training(data, saveCount, intLengths);
+        Training train = new Training(data, netCount, intLengths);
         
         for(int i = 0; i < generationsToRun; i++){
             train.evolveOneGeneration(testcases, mutateVal);
