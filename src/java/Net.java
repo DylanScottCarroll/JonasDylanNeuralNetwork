@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
-import java.util.Random;
+
 
 class Net{
     private Node[][] layers;
