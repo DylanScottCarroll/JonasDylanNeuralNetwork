@@ -1,8 +1,8 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Training{
     private final float SQRT10 = (float) Math.sqrt(10);
-    
     Data data;
     Net[] nextGeneration;
     Net[] generation = null;
@@ -53,6 +53,16 @@ public class Training{
 
     }
 
+    public void retire(int mutateMultiplier, int netsToNotRetire, float mutateVal){
+        Arrays.sort(generation);
+        for(int i = netsToNotRetire; i < generation.length; i++ ){
+            generation[i] = new Net(generation[i%netsToNotRetire], mutateMultiplier * mutateVal);
+
+        }
+
+
+    }
+
 
 
 
@@ -66,7 +76,7 @@ public class Training{
             for(int j = 0; j < testCases; j++){
                 
                 int randData = rand.nextInt(data.imageCount);
-
+                
                 Image image = data.getInput(randData);
                 float[] results = nextGeneration[i].propogate(image.pixels);
 

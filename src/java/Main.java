@@ -33,11 +33,10 @@ class Main{
 
         scan.close();
 
-        float childrenPerNetFloat = (netCount-netsToNotRetire)/netsToNotRetire;
-        if(childrenPerNetFloat%1 !=0){
-            throw(new Exception("Config file data for children and retirees does not add up!"));
+
+        if(((netCount-netsToNotRetire)/netsToNotRetire)%1 !=0){
+            throw(new RuntimeException("Config file data for children and retirees does not add up!"));
         }
-        int childrenPerNet = (int) childrenPerNetFloat;
 
 
         System.out.println(lineScanned);
@@ -59,7 +58,7 @@ class Main{
             for(int i = 0; i < generationsToRun; i++){
                 
                 if(i%retirementRate == 0 && i!=0){
-                    train.retire(mutateMultiplier, netsToNotRetire, childrenPerNet);
+                    train.retire(mutateMultiplier, netsToNotRetire, mutateVal);
 
                 }
 
