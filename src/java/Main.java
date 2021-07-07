@@ -46,13 +46,18 @@ class Main{
             for(int i = 0; i < generationsToRun; i++){
                 train.evolveOneGeneration(testcases, mutateVal);
 
+                Net best = train.generation[0];
                 chartFile.write(Integer.toString(i));
-                for(int j = 1; j < netCount; j++){
+                for(int j = 0; j < netCount; j++){
                     chartFile.write(", " + train.generation[j].fitness);
+
+                    if(train.generation[0].fitness > best.fitness){
+                        best = train.generation[0];
+                    }
                 }
                 chartFile.write("\n");
 
-                System.out.println(i);
+                System.out.println(i + ": " + best.fitness);
             }
 
             chartFile.close();
