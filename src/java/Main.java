@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 

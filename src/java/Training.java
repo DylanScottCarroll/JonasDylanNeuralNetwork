@@ -57,10 +57,7 @@ public class Training{
         Arrays.sort(generation);
         for(int i = netsToNotRetire; i < generation.length; i++ ){
             generation[i] = new Net(generation[i%netsToNotRetire], mutateMultiplier * mutateVal);
-
         }
-
-
     }
 
 
