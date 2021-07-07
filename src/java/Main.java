@@ -59,6 +59,7 @@ class Main{
                 chartFile.write("\n");
 
                 System.out.println(i + ": " + best.fitness);
+                System.out.println("\t" + best.accuracy);
             }
 
             chartFile.close();

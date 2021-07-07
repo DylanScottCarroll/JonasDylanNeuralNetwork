@@ -13,6 +13,7 @@ class Net implements Comparable<Net>{
     public Net(){}
 
     public float fitness = 0.0f;
+    public float accuracy = 0.0f;
 
     //Initializes a brand spanking new network with all-zero weights
     public Net(int[] layerLengths){

@@ -73,6 +73,7 @@ public class Training{
         Random rand = new Random();
         for(int i = 0; i < nextGeneration.length; i++){
             float fitness = 0.0f;
+            float accuracy = 0.0f;
             for(int j = 0; j < testCases; j++){
                 
                 int randData = rand.nextInt(data.imageCount);
@@ -82,9 +83,11 @@ public class Training{
 
 
                 fitness += calculateFitness(results, image.label);
-
+                
+                accuracy = isCorrectGuess(results, image.label) ? 1 : 0;
             }
             nextGeneration[i].fitness = fitness / testCases;
+            nextGeneration[i].accuracy = accuracy / testCases;
             fitness = 0.0f;
         }
     }
@@ -100,6 +103,20 @@ public class Training{
         return (float) (1 - (Math.sqrt(fitness) / SQRT10));
     }
 
+    private boolean isCorrectGuess(float[] results, int label){
+        float largestGuess = results[1];
+        int largesIndex = 0;
+
+        for(int i = 1; i < results.length; i++){
+            if(results[i] > largestGuess){
+                largestGuess = results[i];
+                largesIndex = i;
+            }
+        }
+
+        return (largesIndex == label);
+
+    }
 
     private Net[] randomNets(int length, int[] layerLengths){
         Net[] nets = new Net[length];
