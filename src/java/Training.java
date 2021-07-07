@@ -87,7 +87,7 @@ public class Training{
             float value = results[k] - (label == k ? 1 : 0);
             fitness += value*value;
         }
-        return (float) (Math.sqrt(fitness) / SQRT10);
+        return (float) (1 - (Math.sqrt(fitness) / SQRT10));
     }
 
 
