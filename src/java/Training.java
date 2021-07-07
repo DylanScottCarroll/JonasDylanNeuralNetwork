@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public class Training{
+    private final float SQRT10 = (float) Math.sqrt(10);
+    
     Data data;
     Net[] nextGeneration;
     Net[] generation = null;
@@ -82,9 +84,10 @@ public class Training{
     private float calculateFitness(float[] results, int label){
         float fitness = 0;
         for(int k = 0; k < results.length; k++){
-            fitness += results[k] * (label == k ? 1 : -1);
+            float value = results[k] - (label == k ? 1 : 0);
+            fitness += value*value;
         }
-        return fitness;
+        return (float) (Math.sqrt(fitness) / SQRT10);
     }
 
 
