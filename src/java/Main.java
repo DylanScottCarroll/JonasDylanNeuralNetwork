@@ -44,7 +44,7 @@ class Main{
                 if(train.generation[j].fitness > best.fitness)
                 best = train.generation[j];
             }
-            System.out.println(best.fitness);
+            System.out.println("\t" + i + ": " + best.fitness);
         }
 
         Net best = train.generation[0];

@@ -36,7 +36,8 @@ class Data{
 
             
             //Loop through each image in the binary data and create an Image object
-            int imageCount = (imagesBytes.length - imageDataOffset) / (SIZE*SIZE);
+            imageCount = (imagesBytes.length - imageDataOffset) / (SIZE*SIZE);
+
             images = new Image[imageCount];
 
             for(int i = 0; i < imageCount; i++){
@@ -52,9 +53,7 @@ class Data{
                 images[i] = new Image(imageData, label);
 
             }
-
-            imageCount = images.length;
-
+            
 
         } catch (IOException ex) {
             ex.printStackTrace();

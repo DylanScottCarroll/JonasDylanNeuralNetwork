@@ -32,6 +32,7 @@ public class Training{
     public void evolveOneGeneration(int testCases, float mutateVal){
         runNextGeneration(testCases);
         if(generation==null){
+            generation = new Net[nextGeneration.length];
             for(int i = 0; i < nextGeneration.length; i++){
                 generation[i] = nextGeneration[i];
             }
@@ -63,7 +64,7 @@ public class Training{
             for(int j = 0; j < testCases; j++){
                 
                 int randData = rand.nextInt(data.imageCount);
-                
+
                 Image image = data.getInput(randData);
                 float[] results = nextGeneration[i].propogate(image.pixels);
 
