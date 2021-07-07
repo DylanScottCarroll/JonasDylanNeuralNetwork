@@ -28,17 +28,11 @@ class Main{
         if(((netCount-netsToNotRetire)/netsToNotRetire)%1 !=0){
             throw(new RuntimeException("Config file data for children and retirees does not add up!"));
         }
-        
-
-        int[] intLengths = new int[lengths.length];
-        for(int i = 0; i < lengths.length; i++){
-            intLengths[i] = Integer.parseInt(lengths[i]);
-        }
 
 
         Data data = new Data(imagesFile, labelsFile);
 
-        Training train = new Training(data, netCount, intLengths);
+        Training train = new Training(data, netCount, lengths);
         
         try{
             FileWriter chartFile = new FileWriter("out.csv");
