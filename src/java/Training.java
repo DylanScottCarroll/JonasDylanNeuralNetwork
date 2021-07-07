@@ -58,6 +58,9 @@ public class Training{
         for(int i = netsToNotRetire; i < generation.length; i++ ){
             generation[i] = new Net(generation[i%netsToNotRetire], mutateMultiplier * mutateVal);
         }
+        for(int i = 0; i < generation.length; i++){
+            nextGeneration[i] = generation[i];
+        }
     }
 
 
