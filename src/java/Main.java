@@ -8,36 +8,26 @@ import java.io.IOException;
 
 
 class Main{
+
+    static String imagesFile;
+    static String labelsFile;
+    static float mutateVal;
+    static int mutateMultiplier;
+    static int retirementRate;
+    static int netsToNotRetire;
+    static int testcases;
+    static int generationsToRun;
+    static String outputFile;
+    static int netCount;
+    static int[] lengths;
+
     public static void main(String[] args) throws FileNotFoundException{
 
-        File file = new File("src\\resources\\Config.txt");
-        Scanner scan = new Scanner(file);
-
-        String imagesFile = scan.nextLine();
-        String labelsFile = scan.nextLine();
-        float mutateVal = scan.nextFloat();
-        int mutateMultiplier = scan.nextInt();
-        int retirementRate = scan.nextInt();
-        int netsToNotRetire = scan.nextInt();
-        int testcases = scan.nextInt();
-        int generationsToRun = scan.nextInt();
-        scan.nextLine();
-        String outputFile = scan.nextLine();
-        int netCount = scan.nextInt();
-        scan.nextLine();
-
-        String lineScanned = scan.nextLine();
-        String[] lengths = lineScanned.split(" ");
-
-        scan.close();
-
+        readConfig();
 
         if(((netCount-netsToNotRetire)/netsToNotRetire)%1 !=0){
             throw(new RuntimeException("Config file data for children and retirees does not add up!"));
         }
-
-
-        System.out.println(lineScanned);
         
 
         int[] intLengths = new int[lengths.length];
@@ -93,6 +83,39 @@ class Main{
         
     }
 
+    private static void readConfig(){
+        try{
+            File file = new File("src\\resources\\Config.txt");
+            Scanner scan = new Scanner(file);
+            
+            
+            imagesFile = scan.nextLine().split(": ")[1];
+            labelsFile = scan.nextLine().split(": ")[1];
+            mutateVal = Float.parseFloat(scan.nextLine().split(": ")[1]);
+            mutateMultiplier = Integer.parseInt(scan.nextLine().split(": ")[1]);
+            retirementRate = Integer.parseInt(scan.nextLine().split(": ")[1]);
+            netsToNotRetire = Integer.parseInt(scan.nextLine().split(": ")[1]);
+            testcases = Integer.parseInt(scan.nextLine().split(": ")[1]);
+            generationsToRun = Integer.parseInt(scan.nextLine().split(": ")[1]);
+            outputFile = scan.nextLine().split(": ")[1];
+            netCount = Integer.parseInt(scan.nextLine().split(": ")[1]);
+            
+            String[] strLengths = scan.nextLine().split(": ")[1].split(" ");
+            lengths = new int[strLengths.length];
+            for(int i = 0; i < strLengths.length; i++){
+                lengths[i] = Integer.parseInt(strLengths[i]);
+            }
+
+            
+            scan.close();
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+            System.exit(0);
+        }
+
+
+    }
 
 
 }
