@@ -165,7 +165,7 @@ class Net implements Comparable<Net>{
     @Override
     public int compareTo(Net o) {
         
-        if(this.fitness < o.fitness){
+        if(this.fitness > o.fitness){
             return -1;
         }
         else if(this.fitness == o.fitness){
