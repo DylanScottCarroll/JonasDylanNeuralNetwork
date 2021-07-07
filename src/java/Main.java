@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -15,6 +18,9 @@ class Main{
         String imagesFile = scan.nextLine();
         String labelsFile = scan.nextLine();
         float mutateVal = scan.nextFloat();
+        int mutateMultiplier = scan.nextInt();
+        int retirementRate = scan.nextInt();
+        int netsToNotRetire = scan.nextInt();
         int testcases = scan.nextInt();
         int generationsToRun = scan.nextInt();
         scan.nextLine();
@@ -26,6 +32,13 @@ class Main{
         String[] lengths = lineScanned.split(" ");
 
         scan.close();
+
+        float childrenPerNetFloat = (netCount-netsToNotRetire)/netsToNotRetire;
+        if(childrenPerNetFloat%1 !=0){
+            throw(new Exception("Config file data for children and retirees does not add up!"));
+        }
+        int childrenPerNet = (int) childrenPerNetFloat;
+
 
         System.out.println(lineScanned);
         
@@ -44,6 +57,13 @@ class Main{
             FileWriter chartFile = new FileWriter("out.csv");
 
             for(int i = 0; i < generationsToRun; i++){
+                
+                if(i%retirementRate == 0 && i!=0){
+                    train.retire(mutateMultiplier, netsToNotRetire, childrenPerNet);
+
+                }
+
+
                 train.evolveOneGeneration(testcases, mutateVal);
 
                 Net best = train.generation[0];
