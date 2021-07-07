@@ -1,13 +1,13 @@
-src\resources\TrainingData\emnist-digits-train-images-idx3-ubyte
-src\resources\TrainingData\emnist-digits-train-labels-idx1-ubyte
-0.05
-10
-100
-5
-200
-100
-output.txt
-20
-784 100 100 10
+imageFile: src\resources\TrainingData\emnist-digits-train-images-idx3-ubyte
+CorrectAnswersFile: src\resources\TrainingData\emnist-digits-train-labels-idx1-ubyte
+MutateValue: 0.05
+MutateVlaueMultiplier: 10
+RetirementRate: 100
+NetsToNotRetire: 5
+TestCasesToGrade: 200
+GenerationToRun: 100
+OutputFile: output.txt
+NumberOfNets: 20
+NetSize(Must_start_784_and_end_10): 784 100 100 10
 
 
