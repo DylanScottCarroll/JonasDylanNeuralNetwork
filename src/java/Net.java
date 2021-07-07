@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 
 
-class Net{
+class Net implements Comparable<Net>{
     private Node[][] layers;
     private int[] layerLengths;
 
@@ -162,7 +162,19 @@ class Net{
 
     }
 
-
+    @Override
+    public int compareTo(Net o) {
+        
+        if(this.fitness < o.fitness){
+            return -1;
+        }
+        else if(this.fitness == o.fitness){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
 
 
 }
