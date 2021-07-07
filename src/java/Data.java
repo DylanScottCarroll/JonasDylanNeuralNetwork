@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.System.*;
 
 //Some code coppied from here:
 //https://www.codejava.net/java-se/file-io/how-to-read-and-write-binary-files-in-java
