@@ -2,6 +2,9 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 class Main{
     public static void main(String[] args) throws FileNotFoundException{
@@ -37,14 +40,26 @@ class Main{
 
         Training train = new Training(data, netCount, intLengths);
         
-        for(int i = 0; i < generationsToRun; i++){
-            train.evolveOneGeneration(testcases, mutateVal);
-            Net best = train.generation[0];
-            for(int j = 1; j < netCount; j++){
-                if(train.generation[j].fitness > best.fitness)
-                best = train.generation[j];
+        try{
+            FileWriter chartFile = new FileWriter("out.csv");
+
+            for(int i = 0; i < generationsToRun; i++){
+                train.evolveOneGeneration(testcases, mutateVal);
+
+                chartFile.write(Integer.toString(i));
+                for(int j = 1; j < netCount; j++){
+                    chartFile.write(", " + train.generation[j].fitness);
+                }
+                chartFile.write("\n");
+
+                System.out.println(i);
             }
-            System.out.println("\t" + i + ": " + best.fitness);
+
+            chartFile.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            
         }
 
         Net best = train.generation[0];
