@@ -1,13 +1,13 @@
 Image File: src\resources\TrainingData\emnist-digits-train-images-idx3-ubyte
 Lables File: src\resources\TrainingData\emnist-digits-train-labels-idx1-ubyte
-Mutate Value: 0.05
-Mutate Value Multiplier: 10
-Retirement Rate: 100
-Nets To Not Retire: 5
-Test Cases To Grade: 200
-Generations To Run: 1000
+Mutate Value: 0.2
+Mutate Value Multiplier: 1
+Retirement Rate: 1
+Nets To Not Retire: 1
+Test Cases To Grade: 1000
+Generations To Run: 100000
 Output File: output.txt
-Number Of Nets: 20
-NetSize(Must start 784 and end 10): 784 100 100 10
+Number Of Nets: 1
+NetSize(Must start 784 and end 10): 784 300 10
 
 

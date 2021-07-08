@@ -84,10 +84,10 @@ public class Training{
 
                 fitness += calculateFitness(results, image.label);
                 
-                accuracy = isCorrectGuess(results, image.label) ? 1 : 0;
+                accuracy += isCorrectGuess(results, image.label) ? 1 : 0;
             }
             nextGeneration[i].fitness = fitness / testCases;
-            nextGeneration[i].accuracy = accuracy / testCases;
+            nextGeneration[i].accuracy = accuracy / (float)testCases;
             fitness = 0.0f;
         }
     }
@@ -97,10 +97,14 @@ public class Training{
     private float calculateFitness(float[] results, int label){
         float fitness = 0;
         for(int k = 0; k < results.length; k++){
-            float value = results[k] - (label == k ? 1 : 0);
-            fitness += value*value;
+            if(label==k){
+                fitness += results[k]*9;
+            }
+            else{
+                fitness -= results[k];
+            }
         }
-        return (float) (1 - (Math.sqrt(fitness) / SQRT10));
+        return fitness/9;
     }
 
     private boolean isCorrectGuess(float[] results, int label){
