@@ -38,7 +38,6 @@ class Main{
             FileWriter chartFile = new FileWriter("out.csv");
 
             for(int i = 0; i < generationsToRun; i++){
-                
                 if(i%retirementRate == 0 && i!=0){
                     train.retire(mutateMultiplier, netsToNotRetire, mutateVal);
 
@@ -73,7 +72,7 @@ class Main{
             if(train.generation[i].fitness > best.fitness)
             best = train.generation[i];
         }
-        best.Save(outputFile);
+        
         
     }
 
