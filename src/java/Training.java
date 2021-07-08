@@ -53,7 +53,7 @@ public class Training{
 
     }
 
-    public void retire(int mutateMultiplier, int netsToNotRetire, float mutateVal){
+    public void retire(int mutateMultiplier, int netsToNotRetire, float mutateVal, String outputFile){
         Arrays.sort(generation);
         generation[0].Save(outputFile);
         for(int i = netsToNotRetire; i < generation.length; i++ ){

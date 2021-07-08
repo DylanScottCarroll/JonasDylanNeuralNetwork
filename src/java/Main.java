@@ -39,7 +39,7 @@ class Main{
 
             for(int i = 0; i < generationsToRun; i++){
                 if(i%retirementRate == 0 && i!=0){
-                    train.retire(mutateMultiplier, netsToNotRetire, mutateVal);
+                    train.retire(mutateMultiplier, netsToNotRetire, mutateVal, outputFile);
 
                 }
 
