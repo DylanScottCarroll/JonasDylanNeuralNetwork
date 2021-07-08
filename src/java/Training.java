@@ -55,6 +55,8 @@ public class Training{
 
     public void retire(int mutateMultiplier, int netsToNotRetire, float mutateVal, String outputFile){
         Arrays.sort(generation);
+        
+        System.out.println("Saving Best...");
         generation[0].Save(outputFile);
         for(int i = netsToNotRetire; i < generation.length; i++ ){
             generation[i] = new Net(generation[i%netsToNotRetire], mutateMultiplier * mutateVal);
