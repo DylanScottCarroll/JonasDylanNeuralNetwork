@@ -1,0 +1,7 @@
+src/resources/TrainingData/emnist-digits-train-images-idx3-ubyte
+TrainingData/emnist_digits/emnist-digits-train-images-idx3-ubyte
+bin/java/Main.class
+bin/java/Training.class
+output.txt
+output-allNighter.txt
+out.csv
