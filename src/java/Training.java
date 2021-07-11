@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Training{
-    private final float SQRT10 = (float) Math.sqrt(10);
     Data data;
     Net[] nextGeneration;
     Net[] generation = null;
