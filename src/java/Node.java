@@ -27,6 +27,8 @@ class Node{
             if(weights[i] > 1){weights[i] = 1;}
             if(weights[i] < -1){weights[i] = -1;}
         }
+
+        bias = bias + ((rand.nextFloat()-0.5f)*mutateVal);
     
     }
 
