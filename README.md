@@ -15,11 +15,11 @@ Dylan and Jonas are working together to make a Neural Network for fun and glory.
 
 ☑ Write way to load training data.
 
-☐ Put it all together in Main (and debug 😖)
+☑ Put it all together in Main (and debug 😖)
 
-☐ Add printing stuff to display internal state
+☑ Add printing stuff to display internal state
 
-☐ Train the network to recognize digits
+☑ Train the network to recognize digits
 
 ❔ Write graphical interface that lets us draw our own digits
 
